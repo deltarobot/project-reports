@@ -1,0 +1,75 @@
+\documentclass[11pt]{report}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{glossaries}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{rotating}
+\usepackage{float}
+\usepackage[toc,page]{appendix}
+
+\titleformat{\chapter}{\Large\bfseries}{}{0pt}{\huge}
+\titlespacing\chapter{0pt}{*1}{*1}
+\titlespacing\section{0pt}{*0}{-\parskip}
+\titlespacing\subsection{0pt}{*0}{-\parskip}
+\titlespacing\paragraph{0pt}{*0}{*3}
+
+\newcolumntype{a}[1]{>{\centering}p{#1}}
+
+\newcommand*{\TitleFont}{
+      \usefont{\encodingdefault}{\rmdefault}{b}{n}
+      \fontsize{24}{36}
+      \selectfont
+}
+\newcommand*{\SubtitleFont}{
+      \usefont{\encodingdefault}{\rmdefault}{}{n}
+      \fontsize{12}{12}
+      \selectfont
+}
+\newcommand{\thickline}{\rule{\textwidth}{1.6pt}}
+\newcommand{\thinline}{\rule{\textwidth}{0.4pt}}
+\newcommand{\novspace}{\vspace*{-\baselineskip}\vspace*{4pt}}
+\renewcommand{\dateseparator}{-}
+\let\oldtitle\title
+\newcommand{\fulltitle}[2]{\oldtitle{\thickline \\ \novspace \thinline \\ \TitleFont {#1} \thinline \\ \novspace \thickline #2}}
+\renewcommand{\title}[1]{\fulltitle{#1}{}}
+\newcommand{\titleandsubtitle}[2]{\fulltitle{#1}{\\ \SubtitleFont{#2}}}
+\newcommand{\tableoffiguresandtables}{\listoffigures\begingroup\let\clearpage\relax\listoftables\endgroup}
+\newcommand{\textrotate}[1]{\begin{turn}{-90}#1\end{turn}}
+\newcommand{\signature}[1]{\\Signature: & & Date: & \\ \cline{2-2} \cline{4-4}	& #1 & & YYYY-MM-DD \tabularnewline}
+\newcommand{\signatures}{\begin{tabular}{ca{8cm}ca{4cm}c}\signature{Evan Milton}\signature{Josh DeWitt}\signature{Chat Staley}\signature{James Gehringer}\end{tabular}}
+
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\author{
+	Evan Milton \\
+	Computer and Electronics Engineering \\
+	University of Nebraska at Lincoln - Omaha Campus \\
+	Electronics Engineering
+		\and
+	Josh DeWitt \\
+	Computer and Electronics Engineering \\
+	University of Nebraska at Lincoln - Omaha Campus \\
+	Computer Engineering and Mathematics, minor in Computer Science
+		\and
+	Chad Staley \\
+	Computer and Electronics Engineering \\
+	University of Nebraska at Lincoln - Omaha Campus \\
+	Electronics Engineering
+		\and
+	James Gehringer \\
+	Computer and Electronics Engineering \\
+	University of Nebraska at Lincoln - Omaha Campus \\
+	Computer Engineering, minor in Computer Science
+}
+\date{\yyyymmdddate\today}
