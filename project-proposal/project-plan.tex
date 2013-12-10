@@ -99,12 +99,14 @@ If the change is approved, an \gls{eco} will be used to direct the change.
 \subsection{Project Specific Deliverables}
 There are 5 Project Specific Deliverables.
 	\begin{enumerate}
-		\item  The stepper motors will have a minimum pulse frequency of 10kHz and a margin of pulse frequency error of  $\pm $5\%.
-		\item G-Code will be transfered through TCP/IP.
-Software will be developed using IEEE Std 830-1998 Recommended Practice for Software Requirements Specifications.
-		\item The system will work with any power supply that can output 14 to 36V and less than 10A.
-		\item The system will be able to drive 4 stepper motors, 1 DC motor, 16 GPIO pins, 1 Emergency Stop and 4 Home switches.
-		\item The CPU will not exceed 60$^\circ$ Celsius. 
+		\item  The system will drive at least 4 stepper motors, 1 DC motor, and 16 \gls{gpio}.
+The system will receive inputs from at least 1 motor limit/emergency stop switch and 4 stepper motor home inputs.
+		\item The system will Receive G-code through \gls{tcpip}.
+The system’s software will be developed using IEEE Std 830-1998 Recommended Practice for Software Requirements Specifications.
+		\item The maximum step frequency will be at least 10kHz.
+The target step frequency will be within 5\% of the desired frequency.
+		\item The system power supply will accept between 14V and 36V and draw a maximum of 10A.
+		\item The system will enter thermal shutdown above CPU temperatures of $60^{\circ}C$ and the motors will cease to operate.
 	\end{enumerate}
 \subsection{Design Review}
 The initial project review raised the concern that the scope was too large and not well defined.
