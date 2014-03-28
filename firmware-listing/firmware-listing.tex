@@ -63,7 +63,7 @@ The C2000 code base uses a combination of polling the \gls{spi} communication de
 A second interrupt is generated whenever the emergency stop line transitions from high-to-low or low-to-high, in which case all motor movement is stopped as quickly as possible.
 The pulse train generation is real-time and must execute code as soon as the auto-reloaded timer expires, so polling for \gls{spi} data can be preempted by the timer interrupt.
 An alternate design would be to use interrupt priority and allow the timer to interrupt the \gls{spi} interrupt, however a polling scheme is less risky and is easier to code.
-Because communication can be interrupted, the \gls{pi} will require the C2000 to respond back with a \gls{crc} to ensure that the entire communication block was received.
+Because communication can be interrupted, the \gls{pi} will require the C2000 to echo back sent data to ensure that the entire communication block was received.
 Figure~\ref{fig:c2000-main} depicts the polling loop for the C2000 and figure~\ref{fig:c2000-pulse} depicts the interrupt routine for the pulse train generation.
 
 \subsection{Raspberry Pi Code Architecture}
@@ -100,14 +100,14 @@ The g-code interpreter has been outlined, flow-charted, and approximately 90\% w
 \subsection{CNC Driver}
 The \gls{cnc} driver project is written in C and is responsible for managing communication channels between the \gls{pi} and C2000 through the \gls{spi} and \gls{uart}.
 The g-code interpreter does not write to the \gls{spi} or \gls{uart} directly because these actions require root privileges, so this project was created to allow a single, small program to run as root, while the larger, more frequently changing programs are run by regular users.
-The \gls{cnc} driver listens to a pipe for commands to send to the C2000 and forwards them through \gls{spi}, verifying the \gls{crc} returned from the C2000.
+The \gls{cnc} driver listens to a pipe for commands to send to the C2000 and forwards them through \gls{spi}, verifying that it is received based on the echo back from the C2000.
 The \gls{cnc} driver also looks for a special command that indicates that the next bytes will be \gls{ti} hex data and the program should reset the C2000 and bootload the device with new code.
 The \gls{cnc} driver has been outlined, flow-charted, and 100\% written and tested.
 
 \subsection{Motor Scheduler}
 The motor scheduler project is written in C and is responsible for listening for commands from the \gls{pi} and generating the pulse trains to the motors.
 The project is based off an algorithm that requires no floating point operations on the C2000 for generating pulses, saving resources and allowing better real-time performance.
-The commands are accepted through \gls{spi} and are acknowledged with a \gls{crc}, with the command format specified in a C header file shared between the g-code interpreter and this project.
+The commands are accepted through \gls{spi} and are acknowledged by echoing back the received data, with the command format specified in a C header file shared between the g-code interpreter and this project.
 The motor scheduler has been outlined, flow-charted, and approximately 65\% written, with all written code being completely tested.
 
 \section{Summary}
