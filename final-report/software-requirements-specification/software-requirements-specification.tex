@@ -1,0 +1,82 @@
+\input{../../header.tex}
+
+
+\titleandsubtitle{CNC Interface \\ Software Requirements Specification}{Submitted in Partial Fulfillment of the Requirements for the B.Sc. Degree, \\ Computer and Electronics Engineering, College of Engineering, \\ University of Nebraska \\ Peter Kiewit Institute, Omaha, Nebraska, U.S.A}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\tableoffiguresandtables
+\begin{acronym}
+\newacronym{3d}{3-D}{Three-Dimensional}
+\newacronym{ceen}{CEEN}{Computer and Electronics Engineering}
+\newacronym{ceenc}{\textsc{CeeNC}}{CEEN Numerical Controller}
+\newacronym{cnc}{CNC}{Computer Numerical Control}
+\newacronym{i2c}{I$^2$C}{Inter-Integrated Circuit}
+\newacronym{os}{OS}{Operating System}
+\newacronym{pi}{Pi}{Raspberry Pi}
+\newacronym{rom}{ROM}{Read-Only Memory}
+\newacronym{spi}{SPI}{Serial Peripheral Interface}
+\newacronym{srs}{SRS}{Software Requirements Specification}
+\newacronym{tcpip}{TCP/IP}{Transmission Control Protocol/Internet Protocol}
+\newacronym{ti}{TI}{Texas Instruments}
+\newacronym{uart}{UART}{Universal Asynchronous Receiver/Transmitter}
+\end{acronym}
+
+
+\chapter{Introduction}
+This section provides an overview of the purpose and scope of the \gls{srs} and introduces the acronyms used within the report.
+\section{Purpose}
+The purpose of the \gls{srs} is to define the requirements for the software portion of the \gls{ceenc}.
+This \gls{srs} was developed in conjuntion with a prototype as part of IEEE Std. 830-1998 section 4.6 \cite[p.~9]{std830}.
+This document is intended for anyone that might work on the software at any point in the future.
+\section{Scope}
+The \gls{ceenc} is a network enabled, configurable \gls{cnc}interface that is compact and affordable.
+The \gls{ceenc} accurately and safely drives a set of motors based on G-code files uploaded over the network.
+The file will be interpreted in a single board computer and a microcontroller.
+ The microcontroller then correctly controls the motors through a motor driver board.
+The system can be used to drive a variety of devices, for example a \gls{cnc} Mill or a \gls{3d} printer, through a web interface.
+\newline
+\newline
+The software requirements for this project include a G-code interpreter, ...
+\newline
+\newline
+This subsection should
+\newline
+a) Identify the software product(s) to be produced by name (e.g., Host DBMS, Report Generator, etc.);
+\newline
+b) Explain what the software product(s) will, and, if necessary, will not do;
+\newline
+c) Describe the application of the software being speciÞed, including relevant beneÞts, objectives, and
+goals;
+\newline
+d) Be consistent with similar statements in higher-level specifications (e.g., the system requirements
+specification), if they exist.
+\section{Definitions, Acronyms, and Abbreviations}
+\hspace{12 pt}
+\begin{acronym}
+\newacronym{3d}{3-D}{Three-Dimensional}
+\newacronym{ceen}{CEEN}{Computer and Electronics Engineering}
+\newacronym{ceenc}{\textsc{CeeNC}}{CEEN Numerical Controller}
+\newacronym{cnc}{CNC}{Computer Numerical Control}
+\newacronym{i2c}{I$^2$C}{Inter-Integrated Circuit}
+\newacronym{spi}{SPI}{Serial Peripheral Interface}
+\newacronym{srs}{SRS}{Software Requirements Specification}
+\newacronym{tcpip}{TCP/IP}{Transmission Control Protocol/Internet Protocol}
+\newacronym{uart}{UART}{Universal Asynchronous Receiver/Transmitter}
+\end{acronym}
+
+\section{References}
+%\input{bibliography.tex}
+%http://www.cse.chalmers.se/~feldt/courses/reqeng/examples/srs_example_2010_group2.pdf
+
+\section{Overview}
+The rest of the \gls{srs} contains sections for the overall description and specific requirements for the software.
+The overall description describes how the system will funtion and interact.
+It will also describe who the stakeholders are and their roles as well as system constraints and assumptions.
+The specific requirements section will explain the requirements of the software in a more detailed manner. 
+
+\input{overall-description.tex}
+\input{specific-requirements.tex}
+
+\end{document}
